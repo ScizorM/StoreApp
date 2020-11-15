@@ -12,6 +12,8 @@
 		7E2C58B025606371008B767B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C58AE25606371008B767B /* LaunchScreen.storyboard */; };
 		7E2C58BB25606372008B767B /* StoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58BA25606372008B767B /* StoreAppTests.swift */; };
 		7E2C58C625606372008B767B /* StoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58C525606372008B767B /* StoreAppUITests.swift */; };
+		7E2C58E625606850008B767B /* RequestInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58E525606850008B767B /* RequestInfos.swift */; };
+		7E8004312561A55500479B4B /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8004302561A55500479B4B /* RequestProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,8 @@
 		7E2C58C125606372008B767B /* StoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2C58C525606372008B767B /* StoreAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppUITests.swift; sourceTree = "<group>"; };
 		7E2C58C725606372008B767B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E2C58E525606850008B767B /* RequestInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInfos.swift; sourceTree = "<group>"; };
+		7E8004302561A55500479B4B /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				7E2C58A325606370008B767B /* AppDelegate.swift */,
+				7E2C58E4256067E6008B767B /* Network */,
 				7E2C58AC25606371008B767B /* Assets.xcassets */,
 				7E2C58AE25606371008B767B /* LaunchScreen.storyboard */,
 				7E2C58B125606371008B767B /* Info.plist */,
@@ -117,6 +122,15 @@
 				7E2C58C725606372008B767B /* Info.plist */,
 			);
 			path = StoreAppUITests;
+			sourceTree = "<group>";
+		};
+		7E2C58E4256067E6008B767B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7E2C58E525606850008B767B /* RequestInfos.swift */,
+				7E8004302561A55500479B4B /* RequestProtocol.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E8004312561A55500479B4B /* RequestProtocol.swift in Sources */,
 				7E2C58A425606370008B767B /* AppDelegate.swift in Sources */,
+				7E2C58E625606850008B767B /* RequestInfos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
