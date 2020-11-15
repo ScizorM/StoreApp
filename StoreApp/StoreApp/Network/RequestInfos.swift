@@ -7,14 +7,14 @@
 
 import Foundation
 
-public enum HTTPMethod: String {
+enum HTTPMethod: String {
     case get     = "GET"
     case post    = "POST"
     case put     = "PUT"
     case delete  = "DELETE"
 }
 
-public protocol RequestInfos {
+protocol RequestInfos {
     
     var baseURL: URL { get }
     
@@ -23,11 +23,17 @@ public protocol RequestInfos {
     var method: HTTPMethod { get }
     
     var parameters: [String: Any]? { get }
+    
+    var parameterEncoding: ParameterEncoding { get }
 
 }
 
-public extension RequestInfos {
+extension RequestInfos {
     var baseURL: URL {
         return URL(string: "https://api.mercadolibre.com/sites/MLA/")!
+    }
+    
+    var parameterEncoding: ParameterEncoding {
+        return ParameterEncodingImpl()
     }
 }
