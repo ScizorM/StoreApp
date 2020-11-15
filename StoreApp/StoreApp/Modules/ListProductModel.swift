@@ -10,7 +10,7 @@ import Foundation
 struct ListProductModel: Codable {
     let query: String
     let paging: PaginationModel
-    let results: [ProductModel]?
+    var results: [ProductModel]
 }
 
 struct PaginationModel: Codable {

@@ -14,4 +14,22 @@ extension UIView {
             addSubview(view)
         }
     }
+    
+    func showLoading() {
+        isUserInteractionEnabled = false
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        addSubviews(views: [activityIndicator])
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoading() {
+        guard let activityIndicator = subviews.last as? UIActivityIndicatorView else { return }
+        
+        isUserInteractionEnabled = true
+        activityIndicator.removeFromSuperview()
+    }
 }

@@ -50,7 +50,10 @@ extension SearchProductController: SearchProductViewDelegate {
 
 extension SearchProductController: SearchProductViewModelDelegate {
     func showProductList(modelList: ListProductModel) {
-        //Push
+        DispatchQueue.main.async { [weak self] in
+            let listController = ListProductsController(viewModel: ListProductsViewModel(dataSource: modelList))
+            self?.navigationController?.pushViewController(listController, animated: true)
+        }
     }
     
     func showError(title: String, description: String) {

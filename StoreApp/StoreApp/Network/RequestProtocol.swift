@@ -50,23 +50,17 @@ final class Request<Target: RequestInfos> : RequestProtocol {
     }
     
     func requestData(target: Target, completionHandler: @escaping (_ data: Data?, _ error: Error?) -> Void) {
-        guard var url = URLComponents(string: "\(target.baseURL)\(target.endpoint)") else {
+        guard let url = URL(string: "\(target.baseURL)\(target.endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") else {
             completionHandler(nil, NSError())
             return
         }
         
-        var components: [URLQueryItem] = []
+        var request = URLRequest(url: url)
         
-        target.parameters?.forEach({ key, value in
-            guard let stringValue = value as? Int else { return }
-            components.append(URLQueryItem(name: key, value: "\(stringValue)"))
-        })
-        
-        url.queryItems = components
-        
-        guard let request = url.url else {
+        do {
+            request = try target.parameterEncoding.encode(request: URLRequest(url: url), parameters: target.parameters)
+        } catch {
             completionHandler(nil, NSError())
-            return
         }
         
         URLSession.shared.dataTask(with: request) { data, resp, error in
