@@ -10,6 +10,7 @@ import Foundation
 protocol SearchProductViewModelDelegate: class {
     func showProductList(modelList: ListProductModel)
     func showError(title: String, description: String)
+    func isLoading(shouldShowLoading: Bool)
 }
 
 final class SearchProductViewModel {
@@ -25,11 +26,14 @@ final class SearchProductViewModel {
     }
     
     func search(product: String) {
+        delegate?.isLoading(shouldShowLoading: true)
         service.search(typedValue: product) { [weak self] modelList, error in
             guard let modelList = modelList else {
+                self?.delegate?.isLoading(shouldShowLoading: false)
                 self?.delegate?.showError(title: "Sorry =(", description: "We could not find any results with text typed")
                 return
             }
+            self?.delegate?.isLoading(shouldShowLoading: false)
             self?.delegate?.showProductList(modelList: modelList)
         }
     }

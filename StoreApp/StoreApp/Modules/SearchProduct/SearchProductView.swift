@@ -45,6 +45,12 @@ final class SearchProductView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Public methods
+    func handleLoading(isLoading: Bool) {
+        isLoading ? submitButton.showLoading() : submitButton.hideLoading()
+        submitButton.titleLabel?.alpha = isLoading ? 0 : 1
+    }
+    
     // MARK: - Private methods
     private func shouldEnableButton(charNumber: Int) {
         submitButton.isEnabled = charNumber > 2

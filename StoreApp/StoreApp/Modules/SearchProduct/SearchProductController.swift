@@ -64,4 +64,10 @@ extension SearchProductController: SearchProductViewModelDelegate {
             self?.navigationController?.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func isLoading(shouldShowLoading: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.customView.handleLoading(isLoading: shouldShowLoading)
+        }
+    }
 }
