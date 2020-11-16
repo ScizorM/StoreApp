@@ -43,7 +43,8 @@ final class ListProductsController: UIViewController {
 //MARK: - UITableViewDelegate
 extension ListProductsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let detailController = ProductDetailController(viewModel: ProductDetailViewModel(productInfos: viewModel.getProductInfos(at: indexPath.row)))
+        navigationController?.pushViewController(detailController, animated: true)
     }
 }
 

@@ -7,64 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8CEE455C-11FA-42D3-837B-17D5C618289B"
+            uuid = "8BE373B8-08FC-44FF-A77B-6F4226A367F3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoreApp/Modules/ListProducts/ListProductsController.swift"
+            filePath = "StoreApp/Modules/ProductDetail/ProductDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "openProductCompleteDescription()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9FBA2C20-914C-495E-878D-E6C9AF347135"
+            uuid = "89964074-F648-4EA2-A3A3-FC6699B67C6D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoreApp/Modules/ListProducts/ListProductsViewModel.swift"
+            filePath = "StoreApp/Modules/ProductDetail/ProductDetailController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "downloadImage(at:completion:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "didTapOnSubmitButton()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0C4C18CB-B6C5-4557-B133-C08AD56C69E7"
+            uuid = "092C932D-6B36-44D7-978B-7C9D8C7CD907"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StoreApp/Modules/ListProducts/ProductCell.swift"
+            filePath = "StoreApp/Modules/ProductDetail/ProductDetailView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "prepareForReuse()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FEF259AE-853E-4B55-A35A-D2922154259E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StoreApp/Modules/ListProducts/ProductCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "prepareForReuse()"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "didSubmit()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
