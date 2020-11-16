@@ -22,8 +22,6 @@
 		7E2C58A425606370008B767B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58A325606370008B767B /* AppDelegate.swift */; };
 		7E2C58AD25606371008B767B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C58AC25606371008B767B /* Assets.xcassets */; };
 		7E2C58B025606371008B767B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2C58AE25606371008B767B /* LaunchScreen.storyboard */; };
-		7E2C58BB25606372008B767B /* StoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58BA25606372008B767B /* StoreAppTests.swift */; };
-		7E2C58C625606372008B767B /* StoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58C525606372008B767B /* StoreAppUITests.swift */; };
 		7E2C58E625606850008B767B /* RequestInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2C58E525606850008B767B /* RequestInfos.swift */; };
 		7E8004312561A55500479B4B /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8004302561A55500479B4B /* RequestProtocol.swift */; };
 		7E8004372561A73800479B4B /* SearchProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8004362561A73800479B4B /* SearchProductView.swift */; };
@@ -37,18 +35,16 @@
 		7E87F0B32561FB0F005DD52E /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0B22561FB0F005DD52E /* UIStackViewExtensions.swift */; };
 		7E87F0B82561FD1C005DD52E /* ProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0B72561FD1C005DD52E /* ProductDetailController.swift */; };
 		7E87F0BD2561FDB6005DD52E /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0BC2561FDB6005DD52E /* ProductDetailViewModel.swift */; };
+		7E87F0CD25620FEE005DD52E /* DownloadImageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0CC25620FEE005DD52E /* DownloadImageMock.swift */; };
+		7E87F0D225621036005DD52E /* DownloadImageViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0D125621036005DD52E /* DownloadImageViewModelTest.swift */; };
+		7E87F0E025621195005DD52E /* SearchProductViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0DF25621195005DD52E /* SearchProductViewModelTest.swift */; };
+		7E87F0E72562149F005DD52E /* ListProductsViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0E62562149F005DD52E /* ListProductsViewModelTest.swift */; };
+		7E87F0EE25621784005DD52E /* ProductDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E87F0ED25621784005DD52E /* ProductDetailViewModelTest.swift */; };
 		7EF798272561BE06003A18B7 /* SearchProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF798262561BE06003A18B7 /* SearchProductViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		7E2C58B725606372008B767B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E2C589825606370008B767B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E2C589F25606370008B767B;
-			remoteInfo = StoreApp;
-		};
-		7E2C58C225606372008B767B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E2C589825606370008B767B /* Project object */;
 			proxyType = 1;
@@ -70,17 +66,12 @@
 		7E29A2772561EDEC004C1799 /* DownloadImageRequestInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageRequestInfos.swift; sourceTree = "<group>"; };
 		7E29A27F2561EEBC004C1799 /* DownloadImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageService.swift; sourceTree = "<group>"; };
 		7E29A2842561EF31004C1799 /* DownloadImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewModel.swift; sourceTree = "<group>"; };
-		7E2C58A025606370008B767B /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E2C58A025606370008B767B /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = StoreApp.app; path = "/Users/learningUser/Desktop/StoreApp/StoreApp/build/Debug-iphoneos/StoreApp.app"; sourceTree = "<absolute>"; };
 		7E2C58A325606370008B767B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E2C58AC25606371008B767B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E2C58AF25606371008B767B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E2C58B125606371008B767B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E2C58B625606372008B767B /* StoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E2C58BA25606372008B767B /* StoreAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppTests.swift; sourceTree = "<group>"; };
 		7E2C58BC25606372008B767B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E2C58C125606372008B767B /* StoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E2C58C525606372008B767B /* StoreAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppUITests.swift; sourceTree = "<group>"; };
-		7E2C58C725606372008B767B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E2C58E525606850008B767B /* RequestInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInfos.swift; sourceTree = "<group>"; };
 		7E8004302561A55500479B4B /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		7E8004362561A73800479B4B /* SearchProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductView.swift; sourceTree = "<group>"; };
@@ -94,6 +85,12 @@
 		7E87F0B22561FB0F005DD52E /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		7E87F0B72561FD1C005DD52E /* ProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailController.swift; sourceTree = "<group>"; };
 		7E87F0BC2561FDB6005DD52E /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		7E87F0CB25620FEE005DD52E /* StoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = StoreAppTests.xctest; path = "/Users/learningUser/Desktop/StoreApp/StoreApp/build/Debug-iphoneos/StoreAppTests.xctest"; sourceTree = "<absolute>"; };
+		7E87F0CC25620FEE005DD52E /* DownloadImageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageMock.swift; sourceTree = "<group>"; };
+		7E87F0D125621036005DD52E /* DownloadImageViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewModelTest.swift; sourceTree = "<group>"; };
+		7E87F0DF25621195005DD52E /* SearchProductViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewModelTest.swift; sourceTree = "<group>"; };
+		7E87F0E62562149F005DD52E /* ListProductsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsViewModelTest.swift; sourceTree = "<group>"; };
+		7E87F0ED25621784005DD52E /* ProductDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModelTest.swift; sourceTree = "<group>"; };
 		7EF798262561BE06003A18B7 /* SearchProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,13 +103,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7E2C58B325606372008B767B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E2C58BE25606372008B767B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -150,19 +140,7 @@
 			children = (
 				7E2C58A225606370008B767B /* StoreApp */,
 				7E2C58B925606372008B767B /* StoreAppTests */,
-				7E2C58C425606372008B767B /* StoreAppUITests */,
-				7E2C58A125606370008B767B /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		7E2C58A125606370008B767B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7E2C58A025606370008B767B /* StoreApp.app */,
-				7E2C58B625606372008B767B /* StoreAppTests.xctest */,
-				7E2C58C125606372008B767B /* StoreAppUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7E2C58A225606370008B767B /* StoreApp */ = {
@@ -182,19 +160,11 @@
 		7E2C58B925606372008B767B /* StoreAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E2C58BA25606372008B767B /* StoreAppTests.swift */,
+				7E87F0DC2562114C005DD52E /* Network */,
+				7E87F0DD25621158005DD52E /* Modules */,
 				7E2C58BC25606372008B767B /* Info.plist */,
 			);
 			path = StoreAppTests;
-			sourceTree = "<group>";
-		};
-		7E2C58C425606372008B767B /* StoreAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				7E2C58C525606372008B767B /* StoreAppUITests.swift */,
-				7E2C58C725606372008B767B /* Info.plist */,
-			);
-			path = StoreAppUITests;
 			sourceTree = "<group>";
 		};
 		7E2C58E4256067E6008B767B /* Network */ = {
@@ -253,6 +223,57 @@
 			path = ProductDetail;
 			sourceTree = "<group>";
 		};
+		7E87F0CA25620FCE005DD52E /* DownloadImage */ = {
+			isa = PBXGroup;
+			children = (
+				7E87F0CC25620FEE005DD52E /* DownloadImageMock.swift */,
+				7E87F0D125621036005DD52E /* DownloadImageViewModelTest.swift */,
+			);
+			path = DownloadImage;
+			sourceTree = "<group>";
+		};
+		7E87F0DC2562114C005DD52E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7E87F0CA25620FCE005DD52E /* DownloadImage */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7E87F0DD25621158005DD52E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7E87F0DE2562116D005DD52E /* SearchProduct */,
+				7E87F0E52562147E005DD52E /* ListProducts */,
+				7E87F0EC25621759005DD52E /* ProductDetail */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7E87F0DE2562116D005DD52E /* SearchProduct */ = {
+			isa = PBXGroup;
+			children = (
+				7E87F0DF25621195005DD52E /* SearchProductViewModelTest.swift */,
+			);
+			path = SearchProduct;
+			sourceTree = "<group>";
+		};
+		7E87F0E52562147E005DD52E /* ListProducts */ = {
+			isa = PBXGroup;
+			children = (
+				7E87F0E62562149F005DD52E /* ListProductsViewModelTest.swift */,
+			);
+			path = ListProducts;
+			sourceTree = "<group>";
+		};
+		7E87F0EC25621759005DD52E /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7E87F0ED25621784005DD52E /* ProductDetailViewModelTest.swift */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -288,26 +309,8 @@
 			);
 			name = StoreAppTests;
 			productName = StoreAppTests;
-			productReference = 7E2C58B625606372008B767B /* StoreAppTests.xctest */;
+			productReference = 7E87F0CB25620FEE005DD52E /* StoreAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7E2C58C025606372008B767B /* StoreAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7E2C58D025606372008B767B /* Build configuration list for PBXNativeTarget "StoreAppUITests" */;
-			buildPhases = (
-				7E2C58BD25606372008B767B /* Sources */,
-				7E2C58BE25606372008B767B /* Frameworks */,
-				7E2C58BF25606372008B767B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7E2C58C325606372008B767B /* PBXTargetDependency */,
-			);
-			name = StoreAppUITests;
-			productName = StoreAppUITests;
-			productReference = 7E2C58C125606372008B767B /* StoreAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -323,10 +326,7 @@
 					};
 					7E2C58B525606372008B767B = {
 						CreatedOnToolsVersion = 12.1;
-						TestTargetID = 7E2C589F25606370008B767B;
-					};
-					7E2C58C025606372008B767B = {
-						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
 						TestTargetID = 7E2C589F25606370008B767B;
 					};
 				};
@@ -340,13 +340,12 @@
 				Base,
 			);
 			mainGroup = 7E2C589725606370008B767B;
-			productRefGroup = 7E2C58A125606370008B767B /* Products */;
+			productRefGroup = 7E2C589725606370008B767B;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				7E2C589F25606370008B767B /* StoreApp */,
 				7E2C58B525606372008B767B /* StoreAppTests */,
-				7E2C58C025606372008B767B /* StoreAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -362,13 +361,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7E2C58B425606372008B767B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E2C58BF25606372008B767B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -416,15 +408,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E2C58BB25606372008B767B /* StoreAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7E2C58BD25606372008B767B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E2C58C625606372008B767B /* StoreAppUITests.swift in Sources */,
+				7E87F0D225621036005DD52E /* DownloadImageViewModelTest.swift in Sources */,
+				7E87F0EE25621784005DD52E /* ProductDetailViewModelTest.swift in Sources */,
+				7E87F0E025621195005DD52E /* SearchProductViewModelTest.swift in Sources */,
+				7E87F0E72562149F005DD52E /* ListProductsViewModelTest.swift in Sources */,
+				7E87F0CD25620FEE005DD52E /* DownloadImageMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,11 +423,6 @@
 			isa = PBXTargetDependency;
 			target = 7E2C589F25606370008B767B /* StoreApp */;
 			targetProxy = 7E2C58B725606372008B767B /* PBXContainerItemProxy */;
-		};
-		7E2C58C325606372008B767B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7E2C589F25606370008B767B /* StoreApp */;
-			targetProxy = 7E2C58C225606372008B767B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -614,6 +597,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = StoreAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -624,6 +608,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matheusmartins.StoreAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StoreApp.app/StoreApp";
@@ -635,6 +620,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = StoreAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -648,44 +634,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StoreApp.app/StoreApp";
-			};
-			name = Release;
-		};
-		7E2C58D125606372008B767B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = StoreAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.matheusmartins.StoreAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = StoreApp;
-			};
-			name = Debug;
-		};
-		7E2C58D225606372008B767B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = StoreAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.matheusmartins.StoreAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = StoreApp;
 			};
 			name = Release;
 		};
@@ -715,15 +663,6 @@
 			buildConfigurations = (
 				7E2C58CE25606372008B767B /* Debug */,
 				7E2C58CF25606372008B767B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7E2C58D025606372008B767B /* Build configuration list for PBXNativeTarget "StoreAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7E2C58D125606372008B767B /* Debug */,
-				7E2C58D225606372008B767B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
