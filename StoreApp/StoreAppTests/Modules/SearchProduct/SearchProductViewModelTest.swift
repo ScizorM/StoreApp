@@ -46,6 +46,7 @@ private final class SearchProductServiceMock: SearchProductService {
 private class SearchProductDelegateMock: SearchProductViewModelDelegate {
     var showProductListCalls = 0
     var showErrorCalls = 0
+    var isLoadingCalls = 0
     
     func showProductList(modelList: ListProductModel) {
         showProductListCalls += 1
@@ -55,7 +56,9 @@ private class SearchProductDelegateMock: SearchProductViewModelDelegate {
         showErrorCalls += 1
     }
     
-    
+    func isLoading(shouldShowLoading: Bool) {
+        isLoadingCalls += 1
+    }
 }
 
 final class SearchProductViewModelTest: XCTestCase {
@@ -76,6 +79,7 @@ final class SearchProductViewModelTest: XCTestCase {
         sut.search(product: "")
         XCTAssertTrue(delegate.showErrorCalls == 0)
         XCTAssertTrue(delegate.showProductListCalls == 1)
+        XCTAssertTrue(delegate.isLoadingCalls == 2)
     }
     
     func testSearchFailure() {
@@ -84,5 +88,6 @@ final class SearchProductViewModelTest: XCTestCase {
         sut.search(product: "")
         XCTAssertTrue(delegate.showErrorCalls == 1)
         XCTAssertTrue(delegate.showProductListCalls == 0)
+        XCTAssertTrue(delegate.isLoadingCalls == 2)
     }
 }
