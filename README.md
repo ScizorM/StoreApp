@@ -2,11 +2,12 @@
 
 ## Architecture
 
-- MVVM
+- MVVM-C (C Layer is responsable for constrols reedirection on app)
 
 ## Pods
 
-- None
+- RXSwift
+- RXCocoa
 
 ## Screens
 
@@ -17,10 +18,4 @@
 ## Unit tests
 
 - CMD + U to run unit tests
-
-## App is missing/ coming soon
-
-- Pagination on ListScreen
-- Create a "from to" to currency, so we can show the price currency
-- Some way to get product description and shows it to user without need to go outside the app
 
