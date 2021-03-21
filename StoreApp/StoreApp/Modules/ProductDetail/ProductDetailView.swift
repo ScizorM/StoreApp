@@ -7,13 +7,9 @@
 
 import UIKit
 
-protocol ProductDetailViewDelegate: class {
-    func didTapOnSubmitButton()
-}
-
 final class ProductDetailView: UIView {
     //MARK: - Private properties
-    let scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.showsVerticalScrollIndicator = false
         return scroll
@@ -65,17 +61,14 @@ final class ProductDetailView: UIView {
         return label
     }()
     
-    private lazy var submitButton: UIButton = {
+    // MARK: - Public properties
+    var submitButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 8
         button.backgroundColor = .blue
         button.setTitle("See more details", for: .normal)
-        button.addTarget(self, action: #selector(didSubmit), for: .touchUpInside)
         return button
     }()
-    
-    //MARK: - Public methods
-    weak var delegate: ProductDetailViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -83,11 +76,6 @@ final class ProductDetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - Private methods
-    @objc private func didSubmit() {
-        delegate?.didTapOnSubmitButton()
     }
     
     //MARK: - Public methods

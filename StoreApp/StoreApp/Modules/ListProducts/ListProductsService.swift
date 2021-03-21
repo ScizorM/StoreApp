@@ -5,8 +5,10 @@
 //  Created by Scizor on 15/11/20.
 //
 
+import RxSwift
+
 protocol ListProductsService {
-    func search(typedValue: String, offset: Int, limit: Int, completion: @escaping (ListProductModel?, Error?) -> Void)
+    func search(typedValue: String, offset: Int, limit: Int) -> Observable<ListProductModel>
 }
 
 final class ListProductsServiceImpl: ListProductsService {
@@ -20,14 +22,8 @@ final class ListProductsServiceImpl: ListProductsService {
     }
     
     //MARK: - Public methods
-    func search(typedValue: String, offset: Int, limit: Int, completion: @escaping (ListProductModel?, Error?) -> Void) {
-        return service.requestObject(model: ListProductModel.self, .search(typedValue, offset, limit)) { modelList, error in
-            if let error = error {
-                completion(nil, error)
-            } else {
-                completion(modelList, nil)
-            }
-        }
-    }
+    func search(typedValue: String, offset: Int, limit: Int) -> Observable<ListProductModel> {
+        return service.requestObject(model: ListProductModel.self, .search(typedValue, offset, limit))
+    }   
 }
 

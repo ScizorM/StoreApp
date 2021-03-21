@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import RxSwift
 @testable import StoreApp
 
 final class DownloadImageMock: DownloadImageService {
     var shouldThrowError = false
     var urlSent = ""
     
-    func downloadImage(url: URL, completion: @escaping (Data?, Error?) -> Void) {
+    func downloadImage(url: URL) -> Observable<Data> {
         urlSent = url.absoluteString
-        shouldThrowError ? completion(nil, NSError()) : completion(Data(), nil)
+        return shouldThrowError ? Observable.error(NSError()) : Observable.just(Data())
     }
 }
 

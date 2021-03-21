@@ -6,18 +6,18 @@
 //
 
 import Foundation
-
-protocol ProductDetailViewModelDelegate: class {
-    func openProductCompleteDescription(title: String, descrption: String, url: URL)
-}
+import RxSwift
+import RxCocoa
 
 final class ProductDetailViewModel {
     //MARK: - Private properties
     private let productInfos: ProductModel
     private let imageDownloader: DownloadImageViewModel
+    private let disposeBag = DisposeBag()
     
     //MARK: - Public properties
-    weak var delegate: ProductDetailViewModelDelegate?
+    let tapOnCompleteDescription = PublishRelay<(title: String, description: String, url: URL)>()
+    let getImage = PublishRelay<(imageData: Data?, hasError: Bool)>()
     
     //MARK: - Initialization
     init(productInfos: ProductModel, imageDownloader: DownloadImageViewModel = DownloadImageViewModel()) {
@@ -32,22 +32,20 @@ final class ProductDetailViewModel {
     
     func openProductCompleteDescription() {
         guard let url = URL(string: productInfos.url) else { return }
-        delegate?.openProductCompleteDescription(title: "Warning", descrption: "By tapping on ok you are going to be redirect to an website", url: url)
+        tapOnCompleteDescription.accept((title: "Warning", description: "By tapping on ok you are going to be redirect to an website", url: url))
     }
     
-    func downloadImage(completion: @escaping(_ imageData: Data?, _ hasError: Bool) -> Void) {
+    func downloadImage() {
         guard let url = URL(string: productInfos.thumbnail) else {
-            completion(nil, true)
+            getImage.accept((imageData: nil, hasError: true))
             return
         }
         
-        imageDownloader.downloadImage(url: url) { imageData, error in
-            guard let imageData = imageData else {
-                completion(nil, true)
-                return
-            }
+        imageDownloader.downloadImage(url: url).subscribe (onNext: { [weak self] data in
+            self?.getImage.accept((imageData: data, hasError: false))
+        }, onError: { [weak self] _ in
+            self?.getImage.accept((imageData: nil, hasError: true))
+        }).disposed(by: disposeBag)
 
-            completion(imageData, false)
-        }
     }
 }

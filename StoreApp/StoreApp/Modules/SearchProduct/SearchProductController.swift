@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 
-final class SearchProductController: UIViewController {
+final class SearchProductController: BaseViewController {
     // MARK: - Private propertie
     private let viewModel: SearchProductViewModel
-    private lazy var customView = SearchProductView(delegate: self)
+    private let disposeBag = DisposeBag()
+    private lazy var customView = SearchProductView()
+    
     
     // MARK: - Initialization
     init(viewModel: SearchProductViewModel) {
@@ -31,7 +34,8 @@ final class SearchProductController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        viewModel.delegate = self
+        bindViewModel()
+        bindCustomView()
     }
     
     //MARK: - Private methods
@@ -39,35 +43,18 @@ final class SearchProductController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Search"
     }
-}
-                                     
-// MARK: - SearchProductViewDelegatex
-extension SearchProductController: SearchProductViewDelegate {
-    func didTapOnSubmit(typedValue: String) {
-        viewModel.search(product: typedValue)
+    
+    private func bindViewModel() {
+        viewModel.isLoading.observeOn(MainScheduler.instance).subscribe (onNext: { [weak self] isLoading in
+            self?.customView.handleLoading(isLoading: isLoading)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func bindCustomView() {
+        customView.submitButton.rx.tap.observeOn(MainScheduler.instance).subscribe ({ [weak self] _ in
+            guard let text = self?.customView.searchTextField.text else { return }
+            self?.viewModel.search(product: text)
+        }).disposed(by: disposeBag)
     }
 }
 
-extension SearchProductController: SearchProductViewModelDelegate {
-    func showProductList(modelList: ListProductModel) {
-        DispatchQueue.main.async { [weak self] in
-            let listController = ListProductsController(viewModel: ListProductsViewModel(dataSource: modelList))
-            self?.navigationController?.pushViewController(listController, animated: true)
-        }
-    }
-    
-    func showError(title: String, description: String) {
-        DispatchQueue.main.async { [weak self] in
-            let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Ok", style: .cancel) { _ in }
-            alert.addAction(alertAction)
-            self?.navigationController?.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func isLoading(shouldShowLoading: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            self?.customView.handleLoading(isLoading: shouldShowLoading)
-        }
-    }
-}

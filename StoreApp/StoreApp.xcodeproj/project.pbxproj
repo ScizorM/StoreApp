@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12114F2525FFD13900209356 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12114F2425FFD13900209356 /* BaseViewController.swift */; };
+		12854CE525FBDB170081D039 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12854CE425FBDB170081D039 /* BaseCoordinator.swift */; };
+		12854CE925FBDBF80081D039 /* SearchProductCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12854CE825FBDBF80081D039 /* SearchProductCoordinator.swift */; };
+		12854CED25FBE0690081D039 /* ListProductsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12854CEC25FBE0690081D039 /* ListProductsCoordinator.swift */; };
+		420EC921BBFBC1DC7836A141 /* Pods_StoreAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B611F3A01DE332A167645EB9 /* Pods_StoreAppTests.framework */; };
+		4210E08849D03EBFB0FB3B11 /* Pods_StoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A18F955098E822DE8496492 /* Pods_StoreApp.framework */; };
 		7E29A2432561C6E0004C1799 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29A2422561C6E0004C1799 /* DataExtensions.swift */; };
 		7E29A2482561CFFA004C1799 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29A2472561CFFA004C1799 /* ParameterEncoding.swift */; };
 		7E29A24E2561D9A8004C1799 /* ListProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E29A24D2561D9A8004C1799 /* ListProductsView.swift */; };
@@ -54,6 +60,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A18F955098E822DE8496492 /* Pods_StoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		120AA56825F956E0007750FD /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12114F1925FF81CB00209356 /* StoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = StoreAppTests.xctest; path = "/Users/mlmartins/Desktop/StoreApp/StoreApp/build/Debug-iphoneos/StoreAppTests.xctest"; sourceTree = "<absolute>"; };
+		12114F2425FFD13900209356 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		12854CE425FBDB170081D039 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		12854CE825FBDBF80081D039 /* SearchProductCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductCoordinator.swift; sourceTree = "<group>"; };
+		12854CEC25FBE0690081D039 /* ListProductsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsCoordinator.swift; sourceTree = "<group>"; };
+		2BC13B07787895A8195DD682 /* Pods-StoreApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreApp.debug.xcconfig"; path = "Target Support Files/Pods-StoreApp/Pods-StoreApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7E29A2422561C6E0004C1799 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		7E29A2472561CFFA004C1799 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		7E29A24D2561D9A8004C1799 /* ListProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsView.swift; sourceTree = "<group>"; };
@@ -66,7 +80,6 @@
 		7E29A2772561EDEC004C1799 /* DownloadImageRequestInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageRequestInfos.swift; sourceTree = "<group>"; };
 		7E29A27F2561EEBC004C1799 /* DownloadImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageService.swift; sourceTree = "<group>"; };
 		7E29A2842561EF31004C1799 /* DownloadImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewModel.swift; sourceTree = "<group>"; };
-		7E2C58A025606370008B767B /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = StoreApp.app; path = "/Users/learningUser/Desktop/StoreApp/StoreApp/build/Debug-iphoneos/StoreApp.app"; sourceTree = "<absolute>"; };
 		7E2C58A325606370008B767B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E2C58AC25606371008B767B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E2C58AF25606371008B767B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,13 +98,16 @@
 		7E87F0B22561FB0F005DD52E /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
 		7E87F0B72561FD1C005DD52E /* ProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailController.swift; sourceTree = "<group>"; };
 		7E87F0BC2561FDB6005DD52E /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
-		7E87F0CB25620FEE005DD52E /* StoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = StoreAppTests.xctest; path = "/Users/learningUser/Desktop/StoreApp/StoreApp/build/Debug-iphoneos/StoreAppTests.xctest"; sourceTree = "<absolute>"; };
 		7E87F0CC25620FEE005DD52E /* DownloadImageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageMock.swift; sourceTree = "<group>"; };
 		7E87F0D125621036005DD52E /* DownloadImageViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageViewModelTest.swift; sourceTree = "<group>"; };
 		7E87F0DF25621195005DD52E /* SearchProductViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewModelTest.swift; sourceTree = "<group>"; };
 		7E87F0E62562149F005DD52E /* ListProductsViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListProductsViewModelTest.swift; sourceTree = "<group>"; };
 		7E87F0ED25621784005DD52E /* ProductDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModelTest.swift; sourceTree = "<group>"; };
 		7EF798262561BE06003A18B7 /* SearchProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductViewModel.swift; sourceTree = "<group>"; };
+		B611F3A01DE332A167645EB9 /* Pods_StoreAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoreAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCBEC27B0D704AA922A45E89 /* Pods-StoreAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreAppTests.debug.xcconfig"; path = "Target Support Files/Pods-StoreAppTests/Pods-StoreAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE93D09A4D81803130ADC283 /* Pods-StoreAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreAppTests.release.xcconfig"; path = "Target Support Files/Pods-StoreAppTests/Pods-StoreAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		FCCA87776D3927F931A07DC2 /* Pods-StoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreApp.release.xcconfig"; path = "Target Support Files/Pods-StoreApp/Pods-StoreApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4210E08849D03EBFB0FB3B11 /* Pods_StoreApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,12 +123,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				420EC921BBFBC1DC7836A141 /* Pods_StoreAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12114F2325FFD12200209356 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				12854CE425FBDB170081D039 /* BaseCoordinator.swift */,
+				12114F2425FFD13900209356 /* BaseViewController.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		40BC91FBBD8C0546DFE22E66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A18F955098E822DE8496492 /* Pods_StoreApp.framework */,
+				B611F3A01DE332A167645EB9 /* Pods_StoreAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E29A24C2561D967004C1799 /* ListProducts */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +157,7 @@
 				7E29A2672561E1D0004C1799 /* ListProductsRequestInfos.swift */,
 				7E29A26C2561E2ED004C1799 /* ListProductsService.swift */,
 				7E29A2712561E539004C1799 /* ListProductsViewModel.swift */,
+				12854CEC25FBE0690081D039 /* ListProductsCoordinator.swift */,
 			);
 			path = ListProducts;
 			sourceTree = "<group>";
@@ -140,6 +177,9 @@
 			children = (
 				7E2C58A225606370008B767B /* StoreApp */,
 				7E2C58B925606372008B767B /* StoreAppTests */,
+				A162FA724FDE47B1351E4C19 /* Pods */,
+				40BC91FBBD8C0546DFE22E66 /* Frameworks */,
+				120AA56825F956E0007750FD /* StoreApp.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +226,7 @@
 				7E8004562561B59B00479B4B /* SearcProductRequestInfos.swift */,
 				7E80045B2561B66500479B4B /* SearcProductService.swift */,
 				7EF798262561BE06003A18B7 /* SearchProductViewModel.swift */,
+				12854CE825FBDBF80081D039 /* SearchProductCoordinator.swift */,
 			);
 			path = SearchProduct;
 			sourceTree = "<group>";
@@ -193,6 +234,7 @@
 		7E80043E2561A77500479B4B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				12114F2325FFD12200209356 /* Coordinator */,
 				7E80043F2561A78D00479B4B /* ViewConfiguration.swift */,
 				7E8004442561AA1B00479B4B /* UIViewExtensions.swift */,
 				7E29A2422561C6E0004C1799 /* DataExtensions.swift */,
@@ -274,6 +316,17 @@
 			path = ProductDetail;
 			sourceTree = "<group>";
 		};
+		A162FA724FDE47B1351E4C19 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2BC13B07787895A8195DD682 /* Pods-StoreApp.debug.xcconfig */,
+				FCCA87776D3927F931A07DC2 /* Pods-StoreApp.release.xcconfig */,
+				BCBEC27B0D704AA922A45E89 /* Pods-StoreAppTests.debug.xcconfig */,
+				EE93D09A4D81803130ADC283 /* Pods-StoreAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -281,9 +334,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E2C58CA25606372008B767B /* Build configuration list for PBXNativeTarget "StoreApp" */;
 			buildPhases = (
+				379D6141E33484FD21A857D9 /* [CP] Check Pods Manifest.lock */,
 				7E2C589C25606370008B767B /* Sources */,
 				7E2C589D25606370008B767B /* Frameworks */,
 				7E2C589E25606370008B767B /* Resources */,
+				ADB806A92CEF990CF5D732BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,13 +346,14 @@
 			);
 			name = StoreApp;
 			productName = StoreApp;
-			productReference = 7E2C58A025606370008B767B /* StoreApp.app */;
+			productReference = 120AA56825F956E0007750FD /* StoreApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7E2C58B525606372008B767B /* StoreAppTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E2C58CD25606372008B767B /* Build configuration list for PBXNativeTarget "StoreAppTests" */;
 			buildPhases = (
+				053FAA7CC4C1AF292180536B /* [CP] Check Pods Manifest.lock */,
 				7E2C58B225606372008B767B /* Sources */,
 				7E2C58B325606372008B767B /* Frameworks */,
 				7E2C58B425606372008B767B /* Resources */,
@@ -309,7 +365,7 @@
 			);
 			name = StoreAppTests;
 			productName = StoreAppTests;
-			productReference = 7E87F0CB25620FEE005DD52E /* StoreAppTests.xctest */;
+			productReference = 12114F1925FF81CB00209356 /* StoreAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -369,6 +425,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		053FAA7CC4C1AF292180536B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StoreAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		379D6141E33484FD21A857D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StoreApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADB806A92CEF990CF5D732BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StoreApp/Pods-StoreApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StoreApp/Pods-StoreApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StoreApp/Pods-StoreApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7E2C589C25606370008B767B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -378,6 +498,7 @@
 				7E29A2482561CFFA004C1799 /* ParameterEncoding.swift in Sources */,
 				7E29A2782561EDEC004C1799 /* DownloadImageRequestInfos.swift in Sources */,
 				7E29A2852561EF31004C1799 /* DownloadImageViewModel.swift in Sources */,
+				12114F2525FFD13900209356 /* BaseViewController.swift in Sources */,
 				7E87F0B82561FD1C005DD52E /* ProductDetailController.swift in Sources */,
 				7E8004372561A73800479B4B /* SearchProductView.swift in Sources */,
 				7E8004572561B59B00479B4B /* SearcProductRequestInfos.swift in Sources */,
@@ -385,7 +506,10 @@
 				7E29A26D2561E2ED004C1799 /* ListProductsService.swift in Sources */,
 				7EF798272561BE06003A18B7 /* SearchProductViewModel.swift in Sources */,
 				7E29A2722561E539004C1799 /* ListProductsViewModel.swift in Sources */,
+				12854CE525FBDB170081D039 /* BaseCoordinator.swift in Sources */,
+				12854CED25FBE0690081D039 /* ListProductsCoordinator.swift in Sources */,
 				7E29A2682561E1D0004C1799 /* ListProductsRequestInfos.swift in Sources */,
+				12854CE925FBDBF80081D039 /* SearchProductCoordinator.swift in Sources */,
 				7E2C58A425606370008B767B /* AppDelegate.swift in Sources */,
 				7E80044A2561AB0600479B4B /* SearchProductController.swift in Sources */,
 				7E29A24E2561D9A8004C1799 /* ListProductsView.swift in Sources */,
@@ -556,10 +680,12 @@
 		};
 		7E2C58CB25606372008B767B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BC13B07787895A8195DD682 /* Pods-StoreApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZKHK2T4C5A;
 				INFOPLIST_FILE = StoreApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -575,10 +701,12 @@
 		};
 		7E2C58CC25606372008B767B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCCA87776D3927F931A07DC2 /* Pods-StoreApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZKHK2T4C5A;
 				INFOPLIST_FILE = StoreApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -594,6 +722,7 @@
 		};
 		7E2C58CE25606372008B767B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCBEC27B0D704AA922A45E89 /* Pods-StoreAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -617,6 +746,7 @@
 		};
 		7E2C58CF25606372008B767B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE93D09A4D81803130ADC283 /* Pods-StoreAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 final class ProductDetailController: UIViewController {
     //MARK: - Private properties
     private let customView = ProductDetailView()
+    private let disposeBag = DisposeBag()
     private let viewModel: ProductDetailViewModel
     
     //MARK: -  Initialization
@@ -31,13 +33,10 @@ final class ProductDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        setupDelegates()
         customView.setupView(with: viewModel.feedView())
-        viewModel.downloadImage { [weak self] imageDate, hasError in
-            DispatchQueue.main.async {
-                self?.customView.setupImage(image: imageDate, hasError: hasError)
-            }
-        }
+        viewModel.downloadImage()
+        bindViewModel()
+        bindCustomView()
     }
     
     //MARK: - Private methods
@@ -45,31 +44,28 @@ final class ProductDetailController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Product Detail"
     }
-
-    private func setupDelegates() {
-        customView.delegate = self
-        viewModel.delegate = self
-    }
-}
-
-//MARK: - ProductDetailViewDelegate
-extension ProductDetailController: ProductDetailViewDelegate {
-    func didTapOnSubmitButton() {
-        viewModel.openProductCompleteDescription()
-    }
-}
-
-//MARK: - ProductDetailViewModelDelegate
-extension ProductDetailController: ProductDetailViewModelDelegate {
-    func openProductCompleteDescription(title: String, descrption: String, url: URL) {
-        let alert = UIAlertController(title: title, message: descrption, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            UIApplication.shared.open(url)
-        }
+    
+    private func bindViewModel() {
+        viewModel.getImage.observeOn(MainScheduler.instance).subscribe (onNext: { [weak self] imageData, hasError in
+            self?.customView.setupImage(image: imageData, hasError: hasError)
+        }).disposed(by: disposeBag)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
-        alert.addAction(alertAction)
-        alert.addAction(cancelAction)
-        navigationController?.present(alert, animated: true, completion: nil)
+        viewModel.tapOnCompleteDescription.observeOn(MainScheduler.instance).subscribe (onNext: { [weak self] title, description, url in
+            let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .default) { _ in
+                UIApplication.shared.open(url)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+            alert.addAction(alertAction)
+            alert.addAction(cancelAction)
+            self?.navigationController?.present(alert, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func bindCustomView() {
+        customView.submitButton.rx.tap.observeOn(MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            self?.viewModel.openProductCompleteDescription()
+        }).disposed(by: disposeBag)
     }
 }

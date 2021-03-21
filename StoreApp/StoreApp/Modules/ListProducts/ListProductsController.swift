@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
-final class ListProductsController: UIViewController {
+final class ListProductsController: BaseViewController {
     //MARK: - Private properties
     private let viewModel: ListProductsViewModel
+    private let disposeBag = DisposeBag()
     private lazy var customView = ListProductsView(delegate: self, dataSource: self)
     
     //MARK: - Inititalization
@@ -43,8 +45,7 @@ final class ListProductsController: UIViewController {
 //MARK: - UITableViewDelegate
 extension ListProductsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailController = ProductDetailController(viewModel: ProductDetailViewModel(productInfos: viewModel.getProductInfos(at: indexPath.row)))
-        navigationController?.pushViewController(detailController, animated: true)
+        viewModel.goToProduct(at: indexPath.row)
     }
 }
 
@@ -57,13 +58,12 @@ extension ListProductsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCell.reuseIdentifier) as? ProductCell else { return UITableViewCell() }
         cell.setupInfos(with: viewModel.getProductInfos(at: indexPath.row))
-        viewModel.downloadImage(at: indexPath.row) { image, hasError in
-            guard let imageData = image else { return }
-            DispatchQueue.main.async {
-                cell.setupImage(image: imageData, hasError: hasError)
-            }
-        }
-        
+        viewModel.downloadImage(at: indexPath.row).observeOn(MainScheduler.instance).subscribe (onNext: { imageData in
+            cell.setupImage(image: imageData, hasError: false)
+        }, onError: { (_) in
+            cell.setupImage(image: nil, hasError: true)
+        }).disposed(by: disposeBag)
+    
         return cell
     }
 }

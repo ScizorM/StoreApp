@@ -7,27 +7,17 @@
 
 import XCTest
 import Foundation
+import RxSwift
 @testable import StoreApp
-
-private class ProductDetailViewModelDelegateMock: ProductDetailViewModelDelegate {
-    var openProductCompleteDescriptionCalls = 0
-    
-    func openProductCompleteDescription(title: String, descrption: String, url: URL) {
-        openProductCompleteDescriptionCalls += 1
-    }
-    
-    
-}
 
 final class ProductDetailViewModelTest: XCTestCase {
     private var sut: ProductDetailViewModel!
     private var imageDownloader: DownloadImageMock!
-    private var delegate: ProductDetailViewModelDelegateMock!
+    private var disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         imageDownloader = DownloadImageMock()
-        delegate = ProductDetailViewModelDelegateMock()
         sut = ProductDetailViewModel(productInfos: ProductModel(title: "Test product",
                                                                 seller: nil,
                                                                 price: 1250.0,
@@ -47,15 +37,14 @@ final class ProductDetailViewModelTest: XCTestCase {
         imageDownloader.shouldThrowError = false
         var imageData: Data?
         var erros = 0
-        sut.downloadImage() { data, hasError in
-            if let data = data {
-                imageData = data
-            }
-            
-            if hasError {
-                erros += 1
-            }
-        }
+        
+        sut.getImage.subscribe (onNext: { data, hasError in
+            imageData = data
+        }, onError: { _ in
+            erros += 1
+        }).disposed(by: disposeBag)
+        
+        sut.downloadImage()
         
         XCTAssertTrue(imageData != nil)
         XCTAssertTrue(erros == 0)
@@ -65,24 +54,28 @@ final class ProductDetailViewModelTest: XCTestCase {
         imageDownloader.shouldThrowError = true
         var imageData: Data?
         var erros = 0
-        sut.downloadImage() { data, hasError in
-            if let data = data {
-                imageData = data
-            }
-            
-            if hasError {
-                erros += 1
-            }
-        }
+        
+        sut.getImage.subscribe (onNext: { data, hasError in
+            if hasError { erros += 1 }
+            imageData = data
+        }).disposed(by: disposeBag)
+        
+        sut.downloadImage()
+        
         
         XCTAssertTrue(imageData == nil)
         XCTAssertTrue(erros == 1)
     }
     
     func testOpenProductCompleteDescription() {
-        sut.delegate = delegate
+        var openProductCompleteDescriptionCalls = 0
+        
+        sut.tapOnCompleteDescription.subscribe (onNext: { _, _, _ in
+            openProductCompleteDescriptionCalls += 1
+        }).disposed(by: disposeBag)
+        
         sut.openProductCompleteDescription()
-        XCTAssertTrue(delegate.openProductCompleteDescriptionCalls == 1)
+        XCTAssertTrue(openProductCompleteDescriptionCalls == 1)
     }
 }
 

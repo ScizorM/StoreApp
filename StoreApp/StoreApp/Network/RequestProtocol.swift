@@ -6,20 +6,20 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol RequestProtocol {
     associatedtype
     Target: RequestInfos
-    func requestObject<Model: Codable>(model: Model.Type, _ target: Target, completionHandler: @escaping (_ result: Model?, _ error: Error?) -> Void)
-    func requestData(target: Target, completionHandler: @escaping (_ data: Data?, _ error: Error?) -> Void)
+    func requestObject<Model: Codable>(model: Model.Type, _ target: Target) -> Observable<Model>
+    func requestData(target: Target) -> Observable<Data>
 }
 
 final class Request<Target: RequestInfos> : RequestProtocol {
     //MARK: - Public methods
-    func requestObject<Model>(model: Model.Type, _ target: Target, completionHandler: @escaping (Model?, Error?) -> Void) where Model : Codable {
+    func requestObject<Model: Codable>(model: Model.Type, _ target: Target) -> Observable<Model> {
         guard let url = URL(string: "\(target.baseURL)\(target.endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") else {
-            completionHandler(nil, NSError())
-            return
+            return Observable.error(NSError())
         }
         
         var request = URLRequest(url: url)
@@ -27,32 +27,41 @@ final class Request<Target: RequestInfos> : RequestProtocol {
         do {
             request = try target.parameterEncoding.encode(request: URLRequest(url: url), parameters: target.parameters)
         } catch {
-            completionHandler(nil, NSError())
+            return Observable.error(NSError())
         }
         
-        URLSession.shared.dataTask(with: request) { data, resp, error in
-            if let error = error {
-                completionHandler(nil, error)
-            }
+        return Observable.create { observer in
+            URLSession.shared.dataTask(with: request) { data, resp, error in
+                if let error = error {
+                    observer.onError(error)
+                    observer.onCompleted()
+                }
+                
+                guard let data = data else {
+                    observer.onError(NSError())
+                    observer.onCompleted()
+                    return
+                }
+                
+                do {
+                    let modelList = try JSONDecoder().decode(Model.self , from: data)
+                    observer.onNext(modelList)
+                    observer.onCompleted()
+                } catch {
+                    observer.onError(NSError())
+                    observer.onCompleted()
+                }
+            }.resume()
             
-            guard let data = data else {
-                completionHandler(nil, NSError())
-                return
-            }
-            
-            do {
-                let modelList = try JSONDecoder().decode(Model.self , from: data)
-                completionHandler(modelList, nil)
-            } catch {
-                completionHandler(nil, NSError())
-            }
-        }.resume()
+            return Disposables.create()
+        }
+        
+        
     }
     
-    func requestData(target: Target, completionHandler: @escaping (_ data: Data?, _ error: Error?) -> Void) {
+    func requestData(target: Target) -> Observable<Data> {
         guard let url = URL(string: "\(target.baseURL)\(target.endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")") else {
-            completionHandler(nil, NSError())
-            return
+            return Observable.error(NSError())
         }
         
         var request = URLRequest(url: url)
@@ -60,22 +69,29 @@ final class Request<Target: RequestInfos> : RequestProtocol {
         do {
             request = try target.parameterEncoding.encode(request: URLRequest(url: url), parameters: target.parameters)
         } catch {
-            completionHandler(nil, NSError())
+            return Observable.error(NSError())
+        }
+        return Observable.create { observer in
+            URLSession.shared.dataTask(with: request) { data, resp, error in
+                if let error = error {
+                    observer.onError(error)
+                    observer.onCompleted()
+                }
+                
+                guard let data = data else {
+                    observer.onError(NSError())
+                    observer.onCompleted()
+                    return
+                }
+                
+                observer.onNext(data)
+                observer.onCompleted()
+
+            }.resume()
+            
+            return Disposables.create()
         }
         
-        URLSession.shared.dataTask(with: request) { data, resp, error in
-            if let error = error {
-                completionHandler(nil, error)
-            }
-            
-            guard let data = data else {
-                completionHandler(nil, NSError())
-                return
-            }
-            
-            completionHandler(data, nil)
-
-        }.resume()
     }
 }
 

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol DownloadImageService {
-    func downloadImage(url: URL, completion: @escaping (Data?, Error?) -> Void)
+    func downloadImage(url: URL) -> Observable<Data>
 }
 
 final class DownloadImageServiceImpl: DownloadImageService {
@@ -22,14 +23,8 @@ final class DownloadImageServiceImpl: DownloadImageService {
     }
     
     //MARK: - Public methods
-    func downloadImage(url: URL, completion: @escaping (Data?, Error?) -> Void) {
-        provider.requestData(target: .getImageWithURL(url)) { data, error in
-            if let error = error {
-                completion(nil, error)
-            } else {
-                completion(data, nil)
-            }
-        }
+    func downloadImage(url: URL) -> Observable<Data> {
+        return provider.requestData(target: .getImageWithURL(url))
     }
 }
 

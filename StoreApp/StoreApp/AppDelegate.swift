@@ -11,16 +11,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var coordinator: SearchProductCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let navController = UINavigationController()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let searchProductController = SearchProductController(viewModel: SearchProductViewModel())
-        window!.rootViewController = UINavigationController(rootViewController: searchProductController)
+        window!.rootViewController = navController
+        coordinator = SearchProductCoordinator(navigationController: navController)
+        coordinator?.start()
         window!.makeKeyAndVisible()
         return true
     }
-
-
 }
 

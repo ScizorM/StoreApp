@@ -39,10 +39,10 @@ class ProductCell: UITableViewCell {
         setupViewConfiguration()
     }
     
-    func setupImage(image: Data, hasError: Bool) {
+    func setupImage(image: Data?, hasError: Bool) {
         if hasError { productImage.tintColor = .black }
         productImage.hideLoading()
-        productImage.image = hasError ? UIImage(named: "notFoundICon") : UIImage(data: image)
+        productImage.image = hasError ? UIImage(named: "notFoundICon") : UIImage(data: image!)
     }
 }
 

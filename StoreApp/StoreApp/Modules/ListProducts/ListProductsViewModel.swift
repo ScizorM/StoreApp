@@ -6,20 +6,27 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 final class ListProductsViewModel {
     //MARK: - Private properties
     private var dataSource: ListProductModel
     private let service: ListProductsService
     private let imageDownloader: DownloadImageViewModel
+    private let disposeBag = DisposeBag()
+    
+    private weak var coordinator: ListProductsRedirects?
     
     //MARK: - Initialization
     init(
         dataSource: ListProductModel,
+        coordinator: ListProductsRedirects,
         service: ListProductsService = ListProductsServiceImpl(),
         imageDownloader: DownloadImageViewModel = DownloadImageViewModel()
     ) {
         self.dataSource = dataSource
+        self.coordinator = coordinator
         self.service = service
         self.imageDownloader = imageDownloader
     }
@@ -33,18 +40,15 @@ final class ListProductsViewModel {
         return dataSource.results[index]
     }
     
-    func downloadImage(at index: Int, completion: @escaping(_ imageData: Data?, _ hasError: Bool) -> Void) {
+    func downloadImage(at index: Int) -> Observable<Data> {
         guard let url = URL(string: dataSource.results[index].thumbnail) else {
-            completion(nil, true)
-            return
+            return Observable.error(NSError())
         }
-        imageDownloader.downloadImage(url: url) { imageData, error in
-            guard let imageData = imageData else {
-                completion(nil, true)
-                return
-            }
-
-            completion(imageData, false)
-        }
+        
+        return imageDownloader.downloadImage(url: url)
+    }
+    
+    func goToProduct(at index: Int) {
+        coordinator?.goToProductDetail(viewModel: ProductDetailViewModel(productInfos: dataSource.results[index]))
     }
 }

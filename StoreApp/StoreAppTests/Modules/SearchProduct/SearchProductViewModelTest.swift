@@ -7,6 +7,7 @@
 
 import XCTest
 import Foundation
+import RxSwift
 @testable import StoreApp
 
 private final class SearchProductServiceMock: SearchProductService {
@@ -38,56 +39,65 @@ private final class SearchProductServiceMock: SearchProductService {
                                                                           thumbnail: "teste.com",
                                                                           acceptMercadoPago: true)])
     
-    func search(typedValue: String, completion: @escaping (ListProductModel?, Error?) -> Void) {
-        shouldThrowError ? completion(nil, NSError()) : completion(successAwnser  , nil)
+    func search(typedValue: String) -> Observable<ListProductModel> {
+        return shouldThrowError ? Observable.error(NSError()) : Observable.just(successAwnser)
     }
 }
 
-private class SearchProductDelegateMock: SearchProductViewModelDelegate {
-    var showProductListCalls = 0
+private final class SearchProductCoordinatorMock: SearchProductRedirects {
+    var goToListProductsCalls = 0
     var showErrorCalls = 0
-    var isLoadingCalls = 0
-    
-    func showProductList(modelList: ListProductModel) {
-        showProductListCalls += 1
+    func goToListProducts(productList: ListProductModel) {
+        goToListProductsCalls += 1
     }
     
     func showError(title: String, description: String) {
         showErrorCalls += 1
     }
     
-    func isLoading(shouldShowLoading: Bool) {
-        isLoadingCalls += 1
-    }
+    
 }
 
 final class SearchProductViewModelTest: XCTestCase {
     private var sut: SearchProductViewModel!
     private var service: SearchProductServiceMock!
-    private var delegate: SearchProductDelegateMock!
+    private var coordinator: SearchProductCoordinatorMock!
+    private let disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         service = SearchProductServiceMock()
-        delegate = SearchProductDelegateMock()
-        sut = SearchProductViewModel(service: service)
+        coordinator = SearchProductCoordinatorMock()
+        sut = SearchProductViewModel(service: service, coordinator: coordinator)
     }
     
     func testSearchSuccess() {
         service.shouldThrowError = false
-        sut.delegate = delegate
+        var isLoadingCalls = 0
+        
+        sut.isLoading.subscribe ({ _ in
+            isLoadingCalls += 1
+        }).disposed(by: disposeBag)
+
         sut.search(product: "")
-        XCTAssertTrue(delegate.showErrorCalls == 0)
-        XCTAssertTrue(delegate.showProductListCalls == 1)
-        XCTAssertTrue(delegate.isLoadingCalls == 2)
+        
+        XCTAssertTrue(coordinator.showErrorCalls == 0)
+        XCTAssertTrue(coordinator.goToListProductsCalls == 1)
+        XCTAssertTrue(isLoadingCalls == 2)
     }
     
     func testSearchFailure() {
         service.shouldThrowError = true
-        sut.delegate = delegate
+        var isLoadingCalls = 0
+        
+        sut.isLoading.subscribe ({ _ in
+            isLoadingCalls += 1
+        }).disposed(by: disposeBag)
+        
         sut.search(product: "")
-        XCTAssertTrue(delegate.showErrorCalls == 1)
-        XCTAssertTrue(delegate.showProductListCalls == 0)
-        XCTAssertTrue(delegate.isLoadingCalls == 2)
+        
+        XCTAssertTrue(coordinator.showErrorCalls == 1)
+        XCTAssertTrue(coordinator.goToListProductsCalls == 0)
+        XCTAssertTrue(isLoadingCalls == 2)
     }
 }

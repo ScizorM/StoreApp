@@ -7,6 +7,7 @@
 
 import XCTest
 import Foundation
+import RxSwift
 @testable import StoreApp
 
 private final class ListProductsServiceMock: ListProductsService {
@@ -37,9 +38,16 @@ private final class ListProductsServiceMock: ListProductsService {
                                                                           url: "teste.com",
                                                                           thumbnail: "teste.com",
                                                                           acceptMercadoPago: true)])
+    func search(typedValue: String, offset: Int, limit: Int) -> Observable<ListProductModel> {
+        return shouldThrowError ? Observable.error(NSError()) : Observable.just(successAwnser)
+    }
+}
+
+private final class ListProductsCoordinatorMock: ListProductsRedirects {
+    var goToProductDetailCalls = 0
     
-    func search(typedValue: String, offset: Int, limit: Int, completion: @escaping (ListProductModel?, Error?) -> Void) {
-        shouldThrowError ? completion(nil, NSError()) : completion(successAwnser  , nil)
+    func goToProductDetail(viewModel: ProductDetailViewModel) {
+        goToProductDetailCalls += 1
     }
 }
 
@@ -47,12 +55,15 @@ final class ListProductsViewModelTest: XCTestCase {
     private var sut: ListProductsViewModel!
     private var service: ListProductsServiceMock!
     private var imageDownloader: DownloadImageMock!
+    private var coordinator: ListProductsCoordinatorMock!
+    private let disposeBag = DisposeBag()
     
     override func setUp() {
         super.setUp()
         service = ListProductsServiceMock()
         imageDownloader = DownloadImageMock()
-        sut = ListProductsViewModel(dataSource: service.successAwnser, service: service, imageDownloader: DownloadImageViewModel(service: imageDownloader))
+        coordinator = ListProductsCoordinatorMock()
+        sut = ListProductsViewModel(dataSource: service.successAwnser, coordinator: coordinator,service: service, imageDownloader: DownloadImageViewModel(service: imageDownloader))
     }
     
 
@@ -68,15 +79,11 @@ final class ListProductsViewModelTest: XCTestCase {
         imageDownloader.shouldThrowError = false
         var imageData: Data?
         var erros = 0
-        sut.downloadImage(at: 0) { data, hasError in
-            if let data = data {
-                imageData = data
-            }
-            
-            if hasError {
-                erros += 1
-            }
-        }
+        sut.downloadImage(at: 0).subscribe (onNext: { data in
+            imageData = data
+        }, onError: { _ in
+            erros += 1
+        }).disposed(by: disposeBag)
         
         XCTAssertTrue(imageData != nil)
         XCTAssertTrue(erros == 0)
@@ -86,18 +93,19 @@ final class ListProductsViewModelTest: XCTestCase {
         imageDownloader.shouldThrowError = true
         var imageData: Data?
         var erros = 0
-        sut.downloadImage(at: 0) { data, hasError in
-            if let data = data {
-                imageData = data
-            }
-            
-            if hasError {
-                erros += 1
-            }
-        }
+        sut.downloadImage(at: 0).subscribe (onNext: { data in
+            imageData = data
+        }, onError: { _ in
+            erros += 1
+        }).disposed(by: disposeBag)
         
         XCTAssertTrue(imageData == nil)
         XCTAssertTrue(erros == 1)
+    }
+    
+    func testGoToProduct() {
+        sut.goToProduct(at: 0)
+        XCTAssertTrue(coordinator.goToProductDetailCalls == 1)
     }
 }
 
